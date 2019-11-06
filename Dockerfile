@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY . .
 
+RUN go get ./...
+
 RUN env GOOS=linux CGO_ENABLED=0 GOARCH=amd64 go build -o runtime .
 
 
