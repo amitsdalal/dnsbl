@@ -11,7 +11,7 @@ Repository: https://github.com/amitsdalal/dnsbl
 * Follows the KISS principle (Keep It Simple, Stupid) to make it easy to understand and adjust the image
 * You will get the output aginst the DNSBL name if your IP is blacklisted there.
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/amitdalal/alpine-nginx-php.svg)](https://hub.docker.com/r/amitdalal/dnsbl/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/amitdalal/dnsbl.svg)](https://hub.docker.com/r/amitdalal/dnsbl/)
 ![License Apache](https://img.shields.io/badge/license-apache-blue.svg)
 
 
