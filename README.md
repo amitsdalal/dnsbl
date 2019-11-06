@@ -19,4 +19,4 @@ Repository: https://github.com/amitsdalal/dnsbl
 
 Start the Docker container:
 
-    docker run amitdalal/dnsbl dnsbl <IP address to be checked against the DNSBL>
+    docker run -it --entrypoint=bash amitdalal/dnsbl dnsbl <IP address to be checked against the DNSBL>
