@@ -128,7 +128,7 @@ fi
 # -- do a reverse ( address -> name) DNS lookup
 REVERSE_DNS=$(dig +short -x $1)
 
-echo IP $1 NAME ${REVERSE_DNS:----}
+echo -e "IP : $1  |  NAME : ${REVERSE_DNS:----} \n"
 
 # -- cycle through all the blacklists
 for BL in ${BLISTS} ; do
