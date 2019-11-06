@@ -11,7 +11,7 @@ RUN env GOOS=linux CGO_ENABLED=0 GOARCH=amd64 go build -o runtime .
 
 FROM alpine:latest
 LABEL Maintainer="Amit S Dalal <amit@amitdalal.me>" \
-      Description="Lightweight container with dig and bash and a runtime"
+      Description="Lightweight container with dig, bash and curl && a runtime"
 
 # Install packages
 RUN apk --no-cache add curl bash bind-tools coreutils &&\
@@ -27,10 +27,9 @@ COPY dnsbl.sh  /bin/dnsbl
 # Make sure it is excuteable.
 RUN chmod +x /bin/dnsbl
 
-RUN groupadd -g 999 appuser && \
-    useradd -r -u 999 -g appuser appuser
-USER appuser
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
+USER appuser
 
 COPY --from=builder /app/runtime /bin
 
