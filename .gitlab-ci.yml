@@ -1,0 +1,40 @@
+image: alpine:latest
+
+variables:
+  #ADDITIONAL_HOSTS: dnsbl.magehost.com
+  POSTGRES_ENABLED: "false"
+  ROLLOUT_RESOURCE_TYPE: deployment
+  HELM_VERSION: 2.15.3
+  KUBERNETES_VERSION: 1.15.5
+  PRODUCTION_REPLICAS: 2
+  HELM_UPGRADE_EXTRA_ARGS: --values values.yaml
+
+
+stages:
+  - build
+  - test
+  - deploy
+  - review
+  - dast
+  - staging
+  - canary
+  - production
+  - incremental rollout 10%
+  - incremental rollout 25%
+  - incremental rollout 50%
+  - incremental rollout 100%
+  - performance
+  - cleanup
+
+include:
+  - template: Jobs/Build.gitlab-ci.yml  
+  - template: Jobs/Test.gitlab-ci.yml  
+  - template: Jobs/Code-Quality.gitlab-ci.yml  
+  - template: Jobs/Deploy.gitlab-ci.yml  
+  - template: Jobs/DAST-Default-Branch-Deploy.gitlab-ci.yml
+  - template: Jobs/Browser-Performance-Testing.gitlab-ci.yml 
+  - template: Security/DAST.gitlab-ci.yml  
+  - template: Security/Container-Scanning.gitlab-ci.yml 
+  - template: Security/Dependency-Scanning.gitlab-ci.yml 
+  - template: Security/License-Management.gitlab-ci.yml  
+  - template: Security/SAST.gitlab-ci.yml 
