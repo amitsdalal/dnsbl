@@ -22,7 +22,10 @@ rm glibc-2.28-r0.apk
 
 # Configure DNSBL
 
+WORKDIR /app
+
 COPY dnsbl.sh  /bin/dnsbl
+COPY README.md .
 
 # Make sure it is excuteable.
 RUN chmod +x /bin/dnsbl
