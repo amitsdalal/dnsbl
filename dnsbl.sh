@@ -98,7 +98,7 @@ ERROR() {
 }
 
 # -- Sanity check on parameters
-[ $# -ne 1 ] && ERROR 'Please specify a single IP address'
+[ $# -ne 1 ] && cat README.md && exit 0
 
 # -- if the address consists of 4 groups of minimal 1, maximal digits, separated by '.'
 # -- reverse the order
@@ -109,7 +109,6 @@ reverse=$(echo $1 |
 
 if [ "x${reverse}" = "x" ] ; then
       cat README.md && exit 0
-      exit 1
 fi
 
 # Assuming an IP address of 11.22.33.44 as parameter or argument
