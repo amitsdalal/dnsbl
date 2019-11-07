@@ -8,9 +8,6 @@ variables:
   KUBERNETES_VERSION: 1.15.5
   PRODUCTION_REPLICAS: 2
   HELM_UPGRADE_EXTRA_ARGS: --values values.yaml
-  DAST_WEBSITE: https://dnsbl.magehost.com
-  SAST_DISABLE_DIND: "true"
-  SAST_GOSEC_LEVEL: 2
 
 stages:
   - build
@@ -30,12 +27,4 @@ stages:
 
 include:
   - template: Jobs/Build.gitlab-ci.yml  
-  - template: Jobs/Code-Quality.gitlab-ci.yml  
   - template: Jobs/Deploy.gitlab-ci.yml  
-  - template: Jobs/DAST-Default-Branch-Deploy.gitlab-ci.yml
-  - template: Jobs/Browser-Performance-Testing.gitlab-ci.yml 
-  - template: DAST.gitlab-ci.yml  
-  - template: Container-Scanning.gitlab-ci.yml 
-  - template: Dependency-Scanning.gitlab-ci.yml 
-  - template: License-Management.gitlab-ci.yml  
-  - template: SAST.gitlab-ci.yml 
