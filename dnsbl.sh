@@ -108,7 +108,7 @@ reverse=$(echo $1 |
   sed -ne "s~^\([0-9]\{1,3\}\)\.\([0-9]\{1,3\}\)\.\([0-9]\{1,3\}\)\.\([0-9]\{1,3\}\)$~\4.\3.\2.\1~p")
 
 if [ "x${reverse}" = "x" ] ; then
-      ERROR  "IMHO '$1' doesn't look like a valid IP address"
+      cat README.md && exit 0
       exit 1
 fi
 
