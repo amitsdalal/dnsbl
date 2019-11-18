@@ -69,13 +69,15 @@ func main() {
 		}
 	}()
 
-	surv.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	surv.HandleFunc("/ip/", func(w http.ResponseWriter, r *http.Request) {
 		cmd := exec.CommandContext(r.Context(), "/bin/bash", *scriptPtr, findIP(r.URL.Path))
 		cmd.Stderr = os.Stderr
 		out, err := cmd.Output()
 		if err != nil {
 			w.WriteHeader(500)
 		}
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+        w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
 		w.Write(out)
 	})
 	port := fmt.Sprintf(":%s", *portPtr)
