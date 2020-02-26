@@ -1,3 +1,5 @@
-module github.com/amitsdalal/dnsbl
+module dnsbl
 
-require gocloud.dev v0.17.0
+go 1.13
+
+require gocloud.dev v0.19.0

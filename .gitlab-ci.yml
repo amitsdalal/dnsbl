@@ -1,13 +1,7 @@
-image: alpine:latest
-
 variables:
-  ADDITIONAL_HOSTS: dnsbl.magehost.com
+  PRODUCTION_ADDITIONAL_HOSTS: dnsbl.hyperxapps.com, dnsbl.webscoot.io
   POSTGRES_ENABLED: "false"
   ROLLOUT_RESOURCE_TYPE: deployment
-  HELM_VERSION: 2.15.3
-  KUBERNETES_VERSION: 1.15.5
-  PRODUCTION_REPLICAS: 2
-  HELM_UPGRADE_EXTRA_ARGS: --values values.yaml
 
 stages:
   - build
@@ -26,5 +20,5 @@ stages:
   - cleanup
 
 include:
-  - template: Jobs/Build.gitlab-ci.yml  
-  - template: Jobs/Deploy.gitlab-ci.yml  
+  - template: Jobs/Build.gitlab-ci.yml
+  - template: Jobs/Deploy.gitlab-ci.yml
