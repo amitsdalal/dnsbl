@@ -28,4 +28,4 @@ Or even simple, just do :
 
     curl https://dnsbl.webscoot.io/1.1.1.1
 
-#### Replace 1.1.1.1 with the <IP address to be checked against the DNSBL>
+##### Replace 1.1.1.1 with the < IP address to be checked against the DNSBL >
